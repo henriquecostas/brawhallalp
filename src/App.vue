@@ -17,13 +17,16 @@
                 src="src/assets/img/border-detail.png" 
                 alt="border detail" 
             />
-            <img class='game-logo' :src='game.image.src' :alt='game.image.alt'>
+            <img class='game-logo' 
+                :src='game.image.src' 
+                :alt='game.image.alt'
+            />
         </div>
 
         <character-image>
             <img 
-            :src='game.character.image' 
-            :alt='game.character.description'>
+                :src='game.character.image' 
+                :alt='game.character.description'
             />
         </character-image>
         

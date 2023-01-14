@@ -32,13 +32,13 @@
         opacity: 20%;
         width: 100%;
         height: auto;
+        filter: blur(4px);
     }
 
     .colorize {
         background: rgba(25, 60, 75, 0.27);
         width: 100%;
         height: 100%;
-        filter: blur(2px);
         position: absolute;
     }
     .play-btn {
