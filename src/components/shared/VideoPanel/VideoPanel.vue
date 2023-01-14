@@ -4,7 +4,7 @@
                 src='/src/assets/img/play-btn.png' 
                 alt='Iniciar video'
             />
-
+            <div class="colorize"></div>
             <img class="video-display video" 
                 src="/src/assets/img/sem-imagem.jpg" 
                 alt="Replay do vídeo"
@@ -35,13 +35,17 @@
     }
 
     .colorize {
-        background: rgba(23, 49, 49, 0.4);
+        background: rgba(25, 60, 75, 0.27);
+        width: 100%;
+        height: 100%;
         filter: blur(2px);
+        position: absolute;
     }
     .play-btn {
         position: absolute;
         top: 44%;
         left: 40%;
+        z-index: 4;
     }
 
 </style>

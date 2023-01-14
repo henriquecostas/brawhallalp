@@ -40,12 +40,12 @@ export default {
         top: 20%;
         width: 480px;
         height: 540px;
+        z-index: 4;
     }
 
     .character-image img{
         width: 100%;
         height: 100%;
-
     }
 
 </style>

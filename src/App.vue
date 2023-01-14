@@ -9,6 +9,14 @@
         >
         </video-panel-title>
         <div class='static-bar'>
+            <img class="border-detail" 
+                src="src/assets/img/border-detail.png" 
+                alt="border detail" 
+            />
+            <img class="border-detail invert" 
+                src="src/assets/img/border-detail.png" 
+                alt="border detail" 
+            />
             <img class='game-logo' :src='game.image.src' :alt='game.image.alt'>
         </div>
 
@@ -98,6 +106,7 @@ export default {
     }
 
     .static-bar {
+        z-index: 1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -111,5 +120,15 @@ export default {
         height: 162px;
     }
 
+    .border-detail {
+        position: absolute;
+        right: 186px;
+        mix-blend-mode: color-dodge;
+        transform: matrix(0, -1, -1, 0, 0, 0);
+    }
+
+    .invert {
+        transform: matrix(0, 1, -1, 0, 0, 0);
+    }
 </style>
 

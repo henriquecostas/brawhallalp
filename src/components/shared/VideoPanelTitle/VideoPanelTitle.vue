@@ -32,6 +32,7 @@ export default {
         top: 40%;
         font-size: 32px;
         color: aliceblue;
+        z-index: 4;
     }
 
     .description h1 {
