@@ -8,8 +8,8 @@
             :subtitle='game.description.subtitle'
         >
         </video-panel-title>
-        <div id='static-bar'>
-            <img id='game-logo' :src='game.image.src' :alt='game.image.alt'>
+        <div class='static-bar'>
+            <img class='game-logo' :src='game.image.src' :alt='game.image.alt'>
         </div>
 
         <character-image>
@@ -109,7 +109,7 @@ export default {
         opacity: 20%;
     }
 
-    #static-bar {
+    .static-bar {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -118,7 +118,7 @@ export default {
         background: linear-gradient(180deg, #182429 14.9%, #193C4B 82.08%)
     }
 
-    #game-logo {
+    .game-logo {
         width: 236px;
         height: 162px;
     }
