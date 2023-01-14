@@ -1,65 +1,79 @@
 <template>
-    <div class="app">
-        <div id="description">
-            <H1> {{ title.h3}} </H1>
-            <span> CROSS </span>
-            <H3> {{ title.description}}</H3>
+    <div class='app'>
+        <video-panel>
+        </video-panel>
+        <video-panel-title 
+            :name='game.character.name'
+            :title='game.description.title'
+            :subtitle='game.description.subtitle'
+        >
+        </video-panel-title>
+        <div id='static-bar'>
+            <img id='game-logo' :src='game.image.src' :alt='game.image.alt'>
         </div>
-        <div id="video-display">
-            <img id="play" src="./assets/img/play-btn.png" alt="Iniciar vídeo">
-            <div class="colorize">
-                <img src="./assets/img/sem-imagem.jpg" alt="Replay do vídeo">
-            </div>
-        </div>
-        <div id="static-bar">
-            <img id="game-logo" v-bind:src="game.image.src" :alt="game.image.alt">
-        </div>
-        <div id="character-image">
-            <img :src="game.character.cross.image" alt="Imagem do Cross">
-        </div>
-</div>
+
+        <character-image>
+            <img 
+            :src='game.character.image' 
+            :alt='game.character.description'>
+            />
+        </character-image>
+        
+    </div>
 </template>
 
 <script>
+import VideoPanel from './components/shared/VideoPanel/VideoPanel.vue';
+import VideoPanelTitle from './components/shared/VideoPanelTitle/VideoPanelTitle.vue';
+import CharacterImage from './components/shared/CharacterImage/CharacterImage.vue';
+
 export default {
+    components: {
+        'video-panel': VideoPanel,
+        'video-panel-title': VideoPanelTitle,
+        'character-image': CharacterImage
+    },
+
     data(){
         return {
             game:{
-                character: {
-                    cross:{
-                        image: "src/assets/img/cross_img1.png"
-                    } ,
+                description: {
+                    title: "TOP 5",
+                    subtitle: "BEST COMBOS"
                 },
-                video:[
-                    {
-                        src: "src/assets/video/replay-cross.mp4",
-                        thumb: "src/assets/img/thumbnail.png"
-                    },
-                    {
-                        src: "src/assets/video/replay-cross.mp4",
-                        thumb: "src/assets/img/thumbnail.png"
-                    },
-                    {
-                        src: "src/assets/video/replay-cross.mp4",
-                        thumb: "src/assets/img/thumbnail.png"
-                    },
-                    {
-                        src: "src/assets/video/replay-cross.mp4",
-                        thumb: "src/assets/img/thumbnail.png"
-                    },
-                    {
-                        src: "src/assets/video/replay-cross.mp4",
-                        thumb: "src/assets/img/thumbnail.png"
-                    }                   
-                ],
+
                 image:{
                     src: "src/assets/img/brawhalla-logo.png",
                     alt: "Logo do jogo Brawhalla"
-                }
-            },
-            title: {
-               h3: "TOP 5",
-               description: "BEST COMBOS"
+                },
+
+                character: {
+                    name: 'CROSS',
+                    image: "src/assets/img/cross_img1.png",
+                    description: 'Imagem do Cross',
+                    video:[
+                        {
+                            src: "src/assets/video/replay-cross.mp4",
+                            thumb: "src/assets/img/thumbnail.png"
+                        },
+                        {
+                            src: "src/assets/video/replay-cross.mp4",
+                            thumb: "src/assets/img/thumbnail.png"
+                        },
+                        {
+                            src: "src/assets/video/replay-cross.mp4",
+                            thumb: "src/assets/img/thumbnail.png"
+                        },
+                        {
+                            src: "src/assets/video/replay-cross.mp4",
+                            thumb: "src/assets/img/thumbnail.png"
+                        },
+                        {
+                            src: "src/assets/video/replay-cross.mp4",
+                            thumb: "src/assets/img/thumbnail.png"
+                        }                   
+                    ],
+                },    
             }
         }
     }
@@ -70,80 +84,28 @@ export default {
     * {
         margin: 0px;
         padding:  0px;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%
     }
 
     .app {
         display: flex;
-        box-sizing: border-box;
         background-color: #1E1E1E;
+        height: 100%
     }
+
+
     
-    #description {
-        position: absolute;
-        margin-left: 100px;
-        text-align: center;
-        top: 270px;
-        font-size: 32px;
-        color: aliceblue;
-    }
-
-    #description h1 {
-        font-family: 'Lato', sans-serif;    
-        font-size: 32px;
-        font-weight: 900;
-        padding-bottom: 8px;
-    }
-
-    #description h3 {
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
-        font-size: 32px;
-    }
-
-    #description span {
-        font-family: 'Lancelot', cursive;
-        font-size: 48px;
-        font-weight: 400;
-
-        background: linear-gradient(180deg, #5198B4 24.48%, #1C3843 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-    }
-
-    #character-image {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    
-    #character-image img {
-        position: absolute;
-        padding: 88px 0px;
-        margin-right: 12%;
-        width: 480px;
-        height: auto;
-    }
-
-    #video-display {
-        width: 80%;
-        height: 720px;
-        opacity: 16%;
-        overflow: hidden;
-    }
-
     #play {
         position: absolute;
-        top: 320px;
-        left: 40%;
-        transform: matrix(1, 0, 0, -1, 0, 0);
+        top: 44%;
+        left: 40%
     }
 
-    .colorize {
-        background: rgba(19, 52, 52, 0.4);
-        /* filter: blur(15px); */
-    }
-    #video-display .video {
+    #video-display .video-background {
         opacity: 20%;
     }
 
@@ -152,7 +114,7 @@ export default {
         justify-content: center;
         align-items: center;
         width: 20%;
-        height: 720px;
+        height: 100%;
         background: linear-gradient(180deg, #182429 14.9%, #193C4B 82.08%)
     }
 
