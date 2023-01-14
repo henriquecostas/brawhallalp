@@ -1,5 +1,10 @@
 <template>
-        <div class="video-display">
+        <div class='video-display'>
+            <img class='play-btn' 
+                src='/src/assets/img/play-btn.png' 
+                alt='Iniciar video'
+            />
+
             <img class="video-display video" 
                 src="/src/assets/img/sem-imagem.jpg" 
                 alt="Replay do vídeo"
@@ -11,7 +16,7 @@
     export default {
         data() {
             return {
-
+                
             }
         }
     }
@@ -24,12 +29,19 @@
         overflow: hidden;
     }
     .video {
+        opacity: 20%;
         width: 100%;
         height: auto;
     }
 
-    /* .colorize {
-        background: rgba(23, 219, 219, 0.4);
+    .colorize {
+        background: rgba(23, 49, 49, 0.4);
         filter: blur(2px);
-    } */
+    }
+    .play-btn {
+        position: absolute;
+        top: 44%;
+        left: 40%;
+    }
+
 </style>

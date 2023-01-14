@@ -97,18 +97,6 @@ export default {
         height: 100%
     }
 
-
-    
-    #play {
-        position: absolute;
-        top: 44%;
-        left: 40%
-    }
-
-    #video-display .video-background {
-        opacity: 20%;
-    }
-
     .static-bar {
         display: flex;
         justify-content: center;
