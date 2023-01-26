@@ -36,8 +36,8 @@ export default {
 <style scoped>
     .character-image{
         position: absolute;
-        margin-left: 60%;
-        top: 20%;
+        margin-left: 54vw;
+        top: 20vh;
         width: 480px;
         height: 540px;
         z-index: 4;
