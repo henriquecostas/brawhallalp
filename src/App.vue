@@ -1,6 +1,15 @@
 <template>
     <div class='app'>
         <video-panel>
+                <video
+                    class="video-display video" 
+                    src="src/assets/video/replay-cross.mp4"
+                    autoplay 
+                    muted
+                    loop   
+                    v-on:click="watchToggle"   
+                >
+                </video>
         </video-panel>
         <video-panel-title 
             :name='game.character.name'
@@ -29,24 +38,18 @@
                 :alt='game.character.description'
             />
         </character-image>
-        
-        <div class="video-list-container">
-            <div class="video-list-content">
-                <ul class="video-list">
-                    <li 
-                    class="video-list-item"
-                    v-for="video of game.character.video"
-                    >
-                    <img :src="video.thumb">
-                    </li>
-                </ul>
-            </div>
-            <div class="select-container">
-                <div class="circle"></div>
-                <div class="circle-selected"></div>
-                <div class="circle"></div>
-            </div>
-        </div>
+        <video-slide>
+            <slot>
+                <li 
+                    class="slide-item"
+                    v-for="video in game.character.video"
+                >
+                    <a v-bind:href="video.src">
+                        <img :src="video.thumb" />
+                    </a>
+                </li>
+            </slot>
+        </video-slide>
     </div>
 </template>
 
@@ -54,12 +57,29 @@
 import VideoPanel from './components/shared/VideoPanel/VideoPanel.vue';
 import VideoPanelTitle from './components/shared/VideoPanelTitle/VideoPanelTitle.vue';
 import CharacterImage from './components/shared/CharacterImage/CharacterImage.vue';
+import Slide from './components/shared/Slide/Slide.vue';
 
 export default {
+    methods: {
+            watchToggle: function(event) {
+                let container = document.querySelector('.video-display');
+                let video = document.querySelector('.video-display .video');
+
+                if (video.classList.contains('watch')) {
+                    video.classList.remove('watch')
+                    container.classList.remove('watch')
+                } else {
+                    video.classList.add('watch')
+                    container.classList.add('watch')
+                    video.setAttribute('v-on:click','watchToggle')
+                }
+            }
+        },
     components: {
         'video-panel': VideoPanel,
         'video-panel-title': VideoPanelTitle,
-        'character-image': CharacterImage
+        'character-image': CharacterImage,
+        'video-slide': Slide,
     },
 
     data(){
@@ -212,28 +232,10 @@ export default {
     .video-list-container {
         position: absolute;
         width: 60vw;
-        height: 25vh;
-        top: 65vh;
+        height: 30vh;
+        top: 60vh;
         z-index: 2;
         margin-left: 8vw;
-    }
-
-    .video-list-content{
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-        overflow: hidden;
-        overflow-x: scroll;
-    }
-
-    .video-list{
-        list-style: none;
-        width: max-content;
-    }
-    
-    .video-list-item{
-        display: inline-block;
-        margin: 20px 40px;    
     }
 
 /* ===== Scrollbar CSS ===== */
@@ -250,37 +252,13 @@ export default {
 
   *::-webkit-scrollbar-track {
     background: #2f6c84;
+    border-radius: 4px;
   }
 
   *::-webkit-scrollbar-thumb {
     background-color: #6ad3fc;
     border-radius: 4px;
     border: 0px none #ffffff;
-  }
-
-  /* select */
-  .select-container {
-    border: 2px white dashed;
-    width: 20%;
-    height: 10%;
-    margin: 0 auto;
-    margin-top: 16px;
-  }
-  
-  .circle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #2F6C84;
-    display: inline-block;
-  }
-
-  .circle-selected {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #6AD3FC;
   }
 
 </style>

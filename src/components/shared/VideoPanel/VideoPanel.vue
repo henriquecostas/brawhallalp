@@ -1,14 +1,14 @@
 <template>
         <div class='video-display'>
-            <img class='play-btn' 
+            <img
+                v-on:click="watchToggle" 
+                class='play-btn' 
                 src='/src/assets/img/play-btn.png' 
                 alt='Iniciar video'
             />
             <div class="colorize"></div>
-            <img class="video-display video" 
-                src="/src/assets/img/sem-imagem.jpg" 
-                alt="Replay do vídeo"
-            />
+            <slot>
+            </slot>
         </div>
 </template>
 
@@ -18,23 +18,52 @@
             return {
                 
             }
+        },
+        
+        methods: {
+            watchToggle: function(event) {
+                let container = document.querySelector('.video-display');
+                let video = document.querySelector('.video-display .video');
+
+                if (video.classList.contains('watch')) {
+                    video.classList.remove('watch')
+                    container.classList.remove('watch')
+                } else {
+                    video.classList.add('watch')
+                    container.classList.add('watch')
+                    video.setAttribute('v-on:click','watchToggle')
+                }
+            }
         }
     }
+
+
+
+
+
 </script>
 
 <style scoped>
     .video-display {
-        width: 80%;
+        min-width: 80%;
         height: 100%;
         overflow: hidden;
     }
     .video {
         opacity: 20%;
+        filter: blur(4px);
         width: 100%;
         height: auto;
-        filter: blur(4px);
+        min-width: 100%;
+        min-height: 100%;
     }
-
+    .watch {
+        z-index: 100;
+        position: absolute;
+        min-width: 100%;
+        opacity: 100%;
+        filter: blur(0px);
+    }
     .colorize {
         background: rgba(25, 60, 75, 0.27);
         width: 100%;
@@ -46,6 +75,11 @@
         top: 44%;
         left: 40%;
         z-index: 4;
+        opacity: 50%;
+    }
+
+    .play-btn:hover {
+        opacity: 100%;
     }
 
 </style>
