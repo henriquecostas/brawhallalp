@@ -1,17 +1,30 @@
 <template>
         <div class="slide-container">
+
+            <div class="arrow-previous control">
+                <img
+                    src="src/assets/svg/arrow-left.svg"
+                    alt="Passar slide para esquerda"
+                />
+            </div>
+
             <div class="slide-content">
                 <ul class="slide-list">
-                    <slot class="slide-item">
-                
-                    </slot>
+                    <slot class="slide-item"></slot>
                 </ul>
             </div>
-            <!-- <div class="select-container">
-                <div class="circle"></div>
-                <div class="circle-selected"></div>
-                <div class="circle"></div>
-            </div> -->
+
+            <div class="arrow-next control">
+                <img 
+                    src="src/assets/svg/arrow-right.svg"
+                    alt="Passar slide para direita"
+                />
+            </div>
+
+            <div class="select-container">
+
+            </div>
+
         </div>
 </template>
 
@@ -22,6 +35,95 @@
             return {
 
             }
+        },
+
+        mounted () {
+            const controls = document.querySelectorAll(".control");
+            let items = document.querySelectorAll('.slide-item');    
+            
+            const selectContainer = document.querySelector('.select-container');
+            let selectItems = []
+
+            items.forEach(() => {
+                let select = document.createElement('div')
+                selectContainer.appendChild(select)
+                select.classList.add('select-item')
+                selectItems.push(select)
+            })
+
+            let slideItem = {
+                current: 0,
+                previous: 0,
+                next: 0,
+                max: items.length
+            }
+
+            items[slideItem.current].classList.add('active');
+            selectItems[slideItem.current].classList.add('selected');
+
+            controls.forEach(control => {
+                control.addEventListener('click', () => {
+                    const isRight = control.classList.contains('arrow-next')
+
+                    if (isRight) {
+                        slideItem.current += 1;
+                    } else {
+                        slideItem.current -= 1;
+                    }
+
+                    if (slideItem.current >= slideItem.max) {
+                        slideItem.current = 0;
+                    }
+
+                    if (slideItem.current < 0) {
+                        slideItem.current = slideItem.max - 1;
+                    }
+                    
+                    items.forEach((item) => 
+                        item.classList.remove('active')
+                    );
+                        
+                    selectItems.forEach((select) => 
+                        select.classList.remove('selected')
+                    );
+
+                    items[slideItem.current].scrollIntoView({
+                        inline: "center",
+                        behavior: "smooth"
+                    })
+                
+                    items[slideItem.current].classList.add('active');
+                    selectItems[slideItem.current].classList.add('selected');
+
+
+                })
+            })
+
+            selectItems.forEach(select => {
+                select.addEventListener('click', () => {
+                    const isSelected = select.classList.contains('selected');
+
+                    if (isSelected) {
+                        return
+                    } else {
+                        let selectedItem = document.querySelector('.selected');
+                        selectedItem.classList.remove('selected');
+                        let index = selectItems.indexOf(select);
+                        select.classList.add('selected');
+
+                        items[slideItem.current].classList.remove('active');
+                        slideItem.current = index;
+
+                        items[slideItem.current].classList.add('active');
+                        
+                        items[slideItem.current].scrollIntoView({
+                            inline: "center",
+                            behavior: "smooth"
+                        })
+
+                    }
+                })
+            })
         }
     }
 
@@ -29,21 +131,33 @@
 
 <style>
 
-  .slide-container {
+    .slide-container {
         position: absolute;
-        width: 60vw;
+        width: 55vw;
         height: 30vh;
-        top: 60vh;
-        z-index: 2;
+        top: 40vh;
+        z-index: 10;
         margin-left: 8vw;
+        overflow-x: scroll;
+        cursor: grab;
+        
+    }
+
+    .slide-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .slide-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
 
     .slide-content {
-        width: 100%;
+        width: 80%;
         height: 100%;
         border-radius: 8px;
         overflow: hidden;
-        overflow-x: scroll;
+        margin: 0 auto;
     }
 
     .slide-list {
@@ -54,38 +168,68 @@
     .slide-item {
         display: inline-block;
         margin: 20px 40px;    
+        opacity: 0.5;
     }
 
-    .previous-arrow {}
-    .next-arrow {}
+    .arrow-previous {
+        position: absolute;
+        background-color: #075e81;
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        top: 32%;
+        left: 0;
+        display: flex;
+    }
+    
+    .arrow-previous:hover {
+        background-color: #6AD3FC;
+        transition: 0.7s;
+    }
 
-    .active {}
-    .previous {}
-    .next {}
+    .arrow-next {
+        position: absolute;
+        background-color: #075e81;
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        top: 32%;
+        right: 0;
+        display: flex;
+    }
+
+    .arrow-next:hover {
+        background-color: #6AD3FC;
+        transition: 0.7s;
+    }
+    .active {
+        opacity: 1;
+    }
      
-    /* select */
-  .select-container {
-    border: 2px white dashed;
-    width: 20%;
-    height: 10%;
-    margin: 0 auto;
-    margin-top: 16px;
-  }
+    /* select box */
+    .select-container {
+        width: 20%;
+        height: 10%;
+        margin: 0 auto;
+        margin-top: -70px;
+        display: flex;
+        gap: 20px;
+    }
   
-  .circle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #2F6C84;
-    display: inline-block;
-  }
+    .select-item {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #2F6C84;
+        opacity: 0.5;
+    }
 
-  .selected {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #6AD3FC;
-  }
+    .selected {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #6AD3FC;
+        opacity: 1;
+    }
 
 </style>

@@ -7,7 +7,7 @@
                     autoplay 
                     muted
                     loop   
-                    v-on:click="watchToggle"   
+                    v-on:click="watchToggle"  
                 >
                 </video>
         </video-panel>
@@ -39,17 +39,16 @@
             />
         </character-image>
         <video-slide>
-            <slot>
-                <li 
-                    class="slide-item"
-                    v-for="video in game.character.video"
-                >
-                    <a v-bind:href="video.src">
-                        <img :src="video.thumb" />
-                    </a>
-                </li>
-            </slot>
+            <li
+                class="slide-item"
+                v-for="video in game.character.video"
+            >
+                <a v-bind:href="video.src">
+                    <img :src="video.thumb" />
+                </a>
+            </li>
         </video-slide>
+
     </div>
 </template>
 
@@ -61,20 +60,21 @@ import Slide from './components/shared/Slide/Slide.vue';
 
 export default {
     methods: {
-            watchToggle: function(event) {
-                let container = document.querySelector('.video-display');
-                let video = document.querySelector('.video-display .video');
+        watchToggle: function(event) {
+            let container = document.querySelector('.video-display');
+            let video = document.querySelector('.video-display .video');
 
-                if (video.classList.contains('watch')) {
-                    video.classList.remove('watch')
-                    container.classList.remove('watch')
-                } else {
-                    video.classList.add('watch')
-                    container.classList.add('watch')
-                    video.setAttribute('v-on:click','watchToggle')
-                }
+            if (video.classList.contains('watch')) {
+                video.classList.remove('watch')
+                container.classList.remove('watch')
+            } else {
+                video.classList.add('watch')
+                container.classList.add('watch')
+                video.setAttribute('v-on:click','watchToggle')
             }
-        },
+        }
+    },
+
     components: {
         'video-panel': VideoPanel,
         'video-panel-title': VideoPanelTitle,
@@ -125,61 +125,8 @@ export default {
             }
         }
     }
-    // character: [{
-    //                 name: 'CROSS',
-    //                 image: "src/assets/img/cross_img.png",
-    //                 description: 'Imagem do Cross',
-    //                 video:[
-    //                     {
-    //                         src: "src/assets/video/replay-cross.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-cross.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-cross.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-cross.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-cross.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     }                   
-    //                 ]},
-    //                 {
-    //                 name: 'HUGIN',
-    //                 image: "src/assets/img/hugin_img.png",
-    //                 description: 'Imagem do hugin',
-    //                 video:[
-    //                     {
-    //                         src: "src/assets/video/replay-hugin.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-hugin.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-hugin.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-hugin.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     },
-    //                     {
-    //                         src: "src/assets/video/replay-hugin.mp4",
-    //                         thumb: "src/assets/img/thumbnail.png"
-    //                     }                   
-    //                 ]},
-                    
-    //             ],
 }
+
 </script>
 
 <style>
@@ -190,15 +137,18 @@ export default {
     }
 
     html, body {
-        height: 100%
+        /* height: 100vh; */
+        background-color: #182429;
     }
 
     .app {
         display: flex;
         background-color: #1E1E1E;
-        height: 100%;
-        max-width: 1920px;
-        max-height: 1080px;
+        height: 100vh;
+        max-width: 1440px;
+        max-height: 720px;
+        border-radius: 8px;
+        margin: 0 auto;
     }
 
     .static-bar {
@@ -207,7 +157,7 @@ export default {
         justify-content: center;
         align-items: center;
         width: 20%;
-        height: 100%;
+        min-height: 100%;
         background: linear-gradient(180deg, #182429 14.9%, #193C4B 82.08%)
     }
 
@@ -218,7 +168,7 @@ export default {
 
     .border-detail {
         position: absolute;
-        right: 186px;
+        right: 16%;
         mix-blend-mode: color-dodge;
         transform: matrix(0, -1, -1, 0, 0, 0);
     }
@@ -226,40 +176,6 @@ export default {
     .invert {
         transform: matrix(0, 1, -1, 0, 0, 0);
     }
-
-    /* video list */
-
-    .video-list-container {
-        position: absolute;
-        width: 60vw;
-        height: 30vh;
-        top: 60vh;
-        z-index: 2;
-        margin-left: 8vw;
-    }
-
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #6ad3fc #2f6c84;
-  }
-
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #2f6c84;
-    border-radius: 4px;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #6ad3fc;
-    border-radius: 4px;
-    border: 0px none #ffffff;
-  }
 
 </style>
 

@@ -45,17 +45,18 @@
 
 <style scoped>
     .video-display {
-        min-width: 80%;
+        min-width: 100%;
+        max-width: 100%;
         height: 100%;
         overflow: hidden;
     }
     .video {
         opacity: 20%;
-        filter: blur(4px);
+        filter: blur(8px);
         width: 100%;
         height: auto;
+        max-width: 100%;
         min-width: 100%;
-        min-height: 100%;
     }
     .watch {
         z-index: 100;
@@ -66,14 +67,16 @@
     }
     .colorize {
         background: rgba(25, 60, 75, 0.27);
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 66.7%;
         position: absolute;
+        max-width: 1440px;
+        max-height: 720px;
     }
     .play-btn {
         position: absolute;
-        top: 44%;
-        left: 40%;
+        top: 30vh;
+        left: 50%;
         z-index: 4;
         opacity: 50%;
     }

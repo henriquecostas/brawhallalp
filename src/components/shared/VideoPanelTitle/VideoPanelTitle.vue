@@ -29,7 +29,7 @@ export default {
         position: absolute;
         margin-left: 124px;
         text-align: center;
-        top: 40%;
+        top: 26%;
         font-size: 32px;
         color: aliceblue;
         z-index: 4;
