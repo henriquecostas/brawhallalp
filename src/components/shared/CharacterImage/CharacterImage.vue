@@ -1,14 +1,16 @@
 <template>
-    <div class="character-image">
-        <slot
+    <div class="character-container">
+        <div class="character-image">
+            <slot
             :src='url' 
             :alt='description'
             :width='image.size.width'
             :height='image.size.height'
-        >
-        </slot>
+            >
+            </slot>
+        </div>
     </div>
-
+    
 </template>
 
 <script>
@@ -34,10 +36,17 @@ export default {
 </script>
 
 <style scoped>
-    .character-image{
+
+    .character-container {
+        max-width: 80%;
+        width: 1440px;
+        height: 720px;
+        display: flex;
+        flex-direction: row-reverse;
         position: absolute;
-        right: 12%;
-        top: 10vh;
+    }
+    .character-image{
+        position: fixed;
         width: 480px;
         height: 540px;
         z-index: 4;

@@ -139,8 +139,6 @@
         z-index: 10;
         margin-left: 8vw;
         overflow-x: scroll;
-        cursor: grab;
-        
     }
 
     .slide-container::-webkit-scrollbar {

@@ -1,5 +1,15 @@
 <template>
     <div class='app'>
+        <div class="border-container">
+            <img class="border-detail" 
+                src="src/assets/img/border-detail.png" 
+                alt="border detail" 
+            />
+            <img class="border-detail invert" 
+                src="src/assets/img/border-detail.png" 
+                alt="border detail" 
+            />
+        </div>
         <video-panel>
                 <video
                     class="video-display video" 
@@ -11,28 +21,20 @@
                 >
                 </video>
         </video-panel>
-        <video-panel-title 
+        <!-- <video-panel-title 
             :name='game.character.name'
             :title='game.description.title'
             :subtitle='game.description.subtitle'
         >
-        </video-panel-title>
+        </video-panel-title> -->
         <div class='static-bar'>
-            <img class="border-detail" 
-                src="src/assets/img/border-detail.png" 
-                alt="border detail" 
-            />
-            <img class="border-detail invert" 
-                src="src/assets/img/border-detail.png" 
-                alt="border detail" 
-            />
             <img class='game-logo' 
                 :src='game.image.src' 
                 :alt='game.image.alt'
             />
         </div>
 
-        <character-image>
+        <!-- <character-image>
             <img 
                 :src='game.character.image' 
                 :alt='game.character.description'
@@ -47,7 +49,7 @@
                     <img :src="video.thumb" />
                 </a>
             </li>
-        </video-slide>
+        </video-slide> -->
 
     </div>
 </template>
@@ -136,9 +138,11 @@ export default {
         box-sizing: border-box;
     }
 
-    html, body {
-        /* height: 100vh; */
+    body {
         background-color: #182429;
+        width: max-content;
+        width: 1440px;
+        height: 720px;
     }
 
     .app {
@@ -166,9 +170,18 @@ export default {
         height: 162px;
     }
 
-    .border-detail {
+    .border-container {
+        max-width: 1440px;
+        width: 100%;
+        height: 100%;
         position: absolute;
-        right: 16%;
+        z-index: 10;
+    }
+
+    .border-detail {
+        position: fixed;
+        right: 12.5vh;
+        top: 50vh;
         mix-blend-mode: color-dodge;
         transform: matrix(0, -1, -1, 0, 0, 0);
     }

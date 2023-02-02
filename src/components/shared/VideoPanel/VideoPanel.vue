@@ -45,8 +45,8 @@
 
 <style scoped>
     .video-display {
-        min-width: 100%;
-        max-width: 100%;
+        min-width: 80%;
+        max-width: 80%;
         height: 100%;
         overflow: hidden;
     }
