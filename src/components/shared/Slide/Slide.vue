@@ -1,4 +1,4 @@
-<template>
+<template class="container">
         <div class="slide-container">
 
             <div class="arrow-previous control">
@@ -130,15 +130,23 @@
 </script>
 
 <style>
+    .container {
+        width: 1440px;
+        height: 720px;
+        max-width: 1440px;
+        max-height: 720px;
+    }
 
     .slide-container {
         position: absolute;
-        width: 55vw;
-        height: 30vh;
-        top: 40vh;
+        width: 80vw;
+        height: 120px;
+        bottom: 0;
         z-index: 10;
-        margin-left: 8vw;
         overflow-x: scroll;
+        max-width: 1440px;
+        max-height: 36vh;
+        border: 2px dashed blue;
     }
 
     .slide-container::-webkit-scrollbar {
@@ -168,6 +176,10 @@
         margin: 20px 40px;    
         opacity: 0.5;
     }
+    
+    .slide-item img {
+        height: 140px;
+    }
 
     .arrow-previous {
         position: absolute;
@@ -178,6 +190,7 @@
         top: 32%;
         left: 0;
         display: flex;
+        display: none;
     }
     
     .arrow-previous:hover {
@@ -194,12 +207,15 @@
         top: 32%;
         right: 0;
         display: flex;
+        display: none;
+
     }
 
     .arrow-next:hover {
         background-color: #6AD3FC;
         transition: 0.7s;
     }
+
     .active {
         opacity: 1;
     }

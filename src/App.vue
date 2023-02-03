@@ -1,6 +1,6 @@
 <template>
     <div class='app'>
-        <div class="border-container">
+        <!-- <div class="border-container">
             <img class="border-detail" 
                 src="src/assets/img/border-detail.png" 
                 alt="border detail" 
@@ -9,7 +9,7 @@
                 src="src/assets/img/border-detail.png" 
                 alt="border detail" 
             />
-        </div>
+        </div> -->
         <video-panel>
                 <video
                     class="video-display video" 
@@ -21,12 +21,12 @@
                 >
                 </video>
         </video-panel>
-        <!-- <video-panel-title 
+        <video-panel-title 
             :name='game.character.name'
             :title='game.description.title'
             :subtitle='game.description.subtitle'
         >
-        </video-panel-title> -->
+        </video-panel-title>
         <div class='static-bar'>
             <img class='game-logo' 
                 :src='game.image.src' 
@@ -40,6 +40,7 @@
                 :alt='game.character.description'
             />
         </character-image>
+    -->
         <video-slide>
             <li
                 class="slide-item"
@@ -49,7 +50,7 @@
                     <img :src="video.thumb" />
                 </a>
             </li>
-        </video-slide> -->
+        </video-slide> 
 
     </div>
 </template>
@@ -136,13 +137,23 @@ export default {
         margin: 0px;
         padding:  0px;
         box-sizing: border-box;
+        max-width: 1440px;
+        max-height: 720px;
+    }
+
+    html {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+       
     }
 
     body {
         background-color: #182429;
-        width: max-content;
         width: 1440px;
         height: 720px;
+        margin: 0 auto;
     }
 
     .app {
@@ -167,10 +178,12 @@ export default {
 
     .game-logo {
         width: 236px;
-        height: 162px;
+        height: auto;
+        min-width: 100%;
+        padding: 20px;
     }
 
-    .border-container {
+    /* .border-container {
         max-width: 1440px;
         width: 100%;
         height: 100%;
@@ -188,7 +201,6 @@ export default {
 
     .invert {
         transform: matrix(0, 1, -1, 0, 0, 0);
-    }
+    } */
 
 </style>
-

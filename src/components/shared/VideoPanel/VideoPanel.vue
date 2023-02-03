@@ -54,7 +54,6 @@
         opacity: 20%;
         filter: blur(8px);
         width: 100%;
-        height: auto;
         max-width: 100%;
         min-width: 100%;
     }
@@ -68,17 +67,16 @@
     .colorize {
         background: rgba(25, 60, 75, 0.27);
         width: 100vw;
-        height: 66.7%;
+        height: 100vh;
         position: absolute;
         max-width: 1440px;
         max-height: 720px;
     }
     .play-btn {
         position: absolute;
-        top: 30vh;
-        left: 50%;
+        top: 46%;
+        left: 45%;
         z-index: 4;
-        opacity: 50%;
     }
 
     .play-btn:hover {

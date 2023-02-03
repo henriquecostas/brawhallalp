@@ -27,9 +27,9 @@ export default {
 <style scoped>
     .description {
         position: absolute;
-        margin-left: 124px;
+        margin-left: 4%;
         text-align: center;
-        top: 26%;
+        top: 42%;
         font-size: 32px;
         color: aliceblue;
         z-index: 4;
