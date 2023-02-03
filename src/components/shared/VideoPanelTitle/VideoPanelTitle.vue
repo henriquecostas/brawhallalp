@@ -1,10 +1,12 @@
 <template>
-    <div class='description'>
-        <slot name='video-panel-title'>
-            <H1> {{ title }} </H1>
-            <span> {{ name }} </span>
-            <H3> {{ subtitle }} </H3>
-        </slot>
+    <div class="description-container">
+        <div class='description'>
+            <slot name='video-panel-title'>
+                <H1> {{ title }} </H1>
+                <span> {{ name }} </span>
+                <H3> {{ subtitle }} </H3>
+            </slot>
+        </div>
     </div>
 </template>
 
@@ -25,14 +27,29 @@ export default {
 </script>
 
 <style scoped>
-    .description {
+
+    .description-container {
         position: absolute;
-        margin-left: 4%;
+
+        display: flex;
+        align-items: center;
+
+        width:  100%;
+        height:  100%;
+        
+        max-width: 1440px;
+        max-height: 720px;
+
+        padding-left: 4%;
+
+    }
+
+    .description {
+        z-index: 4;
+
         text-align: center;
-        top: 42%;
         font-size: 32px;
         color: aliceblue;
-        z-index: 4;
     }
 
     .description h1 {

@@ -21,6 +21,8 @@
                 >
                 </video>
         </video-panel>
+        <div class="colorize"> </div>
+
         <video-panel-title 
             :name='game.character.name'
             :title='game.description.title'
@@ -34,23 +36,27 @@
             />
         </div>
 
-        <!-- <character-image>
-            <img 
-                :src='game.character.image' 
-                :alt='game.character.description'
-            />
-        </character-image>
-    -->
-        <video-slide>
-            <li
-                class="slide-item"
-                v-for="video in game.character.video"
-            >
-                <a v-bind:href="video.src">
-                    <img :src="video.thumb" />
-                </a>
-            </li>
-        </video-slide> 
+        <div class="half-panel">
+            <character-image>
+                <img 
+                    :src='game.character.image' 
+                    :alt='game.character.description'
+                />
+            </character-image>
+        </div>
+
+        <div class="panel">
+            <video-slide>
+                <li
+                    class="slide-item"
+                    v-for="video in game.character.video"
+                >
+                    <a v-bind:href="video.src">
+                        <img :src="video.thumb" />
+                    </a>
+                </li>
+            </video-slide> 
+        </div>
 
     </div>
 </template>
@@ -137,49 +143,62 @@ export default {
         margin: 0px;
         padding:  0px;
         box-sizing: border-box;
-        max-width: 1440px;
-        max-height: 720px;
+
     }
 
     html {
+
         width: 100vw;
         height: 100vh;
-        display: flex;
-        align-items: center;
-       
+        margin: 0 auto;
+        
     }
 
     body {
-        background-color: #182429;
-        width: 1440px;
-        height: 720px;
+
+        width: 100%;
+        height: 100%;
+        
         margin: 0 auto;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        background-color: #182429;
     }
 
     .app {
-        display: flex;
-        background-color: #1E1E1E;
-        height: 100vh;
+
+        height: 100%;
+        width: 100%;
+        
         max-width: 1440px;
         max-height: 720px;
+
+        display: flex;
+
+        background-color: #1E1E1E;    
         border-radius: 8px;
-        margin: 0 auto;
+        border: 1px solid #193c4b;
+
     }
 
     .static-bar {
         z-index: 1;
+
         display: flex;
         justify-content: center;
         align-items: center;
+        
         width: 20%;
-        min-height: 100%;
-        background: linear-gradient(180deg, #182429 14.9%, #193C4B 82.08%)
+        
+        background: linear-gradient(180deg, #182429 14.9%, #193C4B 82.08%);
+        border-radius: 0px 8px 8px 0px;
     }
 
     .game-logo {
-        width: 236px;
-        height: auto;
-        min-width: 100%;
+        min-width: 80%;
         padding: 20px;
     }
 
@@ -202,5 +221,36 @@ export default {
     .invert {
         transform: matrix(0, 1, -1, 0, 0, 0);
     } */
+
+    .colorize {
+        background: rgba(25, 60, 75, 0.27);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        max-width: 1440px;
+        max-height: 720px;
+        border-radius: 8px;
+    }
+
+    .panel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        max-width: 1440px;
+        max-height: 720px;
+        border-radius: 8px;
+    }
+
+    .half-panel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        max-width: 1222px;
+        max-height: 720px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        border-radius: 8px;
+    }
 
 </style>

@@ -130,23 +130,16 @@
 </script>
 
 <style>
-    .container {
-        width: 1440px;
-        height: 720px;
-        max-width: 1440px;
-        max-height: 720px;
-    }
-
     .slide-container {
         position: absolute;
-        width: 80vw;
-        height: 120px;
+        display: flex;
+        flex-direction: column;
+ 
         bottom: 0;
-        z-index: 10;
-        overflow-x: scroll;
-        max-width: 1440px;
-        max-height: 36vh;
-        border: 2px dashed blue;
+        margin-bottom: 20px;
+ 
+        width: 80%;
+        height: 160px;
     }
 
     .slide-container::-webkit-scrollbar {
@@ -169,11 +162,12 @@
     .slide-list {
         list-style: none;
         width: max-content;
+        max-width: max-content;
     }
     
     .slide-item {
         display: inline-block;
-        margin: 20px 40px;    
+        margin: 0px 40px;    
         opacity: 0.5;
     }
     
@@ -222,25 +216,23 @@
      
     /* select box */
     .select-container {
-        width: 20%;
-        height: 10%;
+        width: max-content;
         margin: 0 auto;
-        margin-top: -70px;
         display: flex;
         gap: 20px;
     }
   
     .select-item {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background-color: #2F6C84;
         opacity: 0.5;
     }
 
     .selected {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background-color: #6AD3FC;
         opacity: 1;

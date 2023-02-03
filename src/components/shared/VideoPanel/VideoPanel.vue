@@ -1,12 +1,14 @@
 <template>
         <div class='video-display'>
-            <img
-                v-on:click="watchToggle" 
-                class='play-btn' 
-                src='/src/assets/img/play-btn.png' 
-                alt='Iniciar video'
-            />
-            <div class="colorize"></div>
+            <div class="watch-video">
+                <img
+                    v-on:click="watchToggle" 
+                    class='play-btn' 
+                    src='/src/assets/img/play-btn.png' 
+                    alt='Iniciar video'
+                />
+            </div>
+            <!-- <div class="colorize"></div> -->
             <slot>
             </slot>
         </div>
@@ -45,10 +47,17 @@
 
 <style scoped>
     .video-display {
-        min-width: 80%;
+        width: 80%;
         max-width: 80%;
+
         height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         overflow: hidden;
+        
     }
     .video {
         opacity: 20%;
@@ -59,23 +68,24 @@
     }
     .watch {
         z-index: 100;
-        position: absolute;
-        min-width: 100%;
         opacity: 100%;
         filter: blur(0px);
     }
-    .colorize {
-        background: rgba(25, 60, 75, 0.27);
-        width: 100vw;
-        height: 100vh;
+
+    .watch-video {
+        width: 100px;
+        height: 100px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
         position: absolute;
-        max-width: 1440px;
-        max-height: 720px;
+        margin-left: 10%;
     }
     .play-btn {
         position: absolute;
-        top: 46%;
-        left: 45%;
+        margin-left: 20%;
         z-index: 4;
     }
 

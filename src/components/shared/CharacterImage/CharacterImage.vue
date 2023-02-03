@@ -1,5 +1,5 @@
 <template>
-    <div class="character-container">
+
         <div class="character-image">
             <slot
             :src='url' 
@@ -9,7 +9,6 @@
             >
             </slot>
         </div>
-    </div>
     
 </template>
 
@@ -37,16 +36,9 @@ export default {
 
 <style scoped>
 
-    .character-container {
-        max-width: 80%;
-        width: 1440px;
-        height: 720px;
-        display: flex;
-        flex-direction: row-reverse;
-        position: absolute;
-    }
     .character-image{
-        position: fixed;
+        position: absolute;
+
         width: 480px;
         height: 540px;
         z-index: 4;
