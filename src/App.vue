@@ -12,7 +12,7 @@
         </div> -->
         <video-panel>
                 <video
-                    class="video-display video" 
+                    class="video" 
                     src="src/assets/video/replay-cross.mp4"
                     autoplay 
                     muted
@@ -57,7 +57,6 @@
                 </li>
             </video-slide> 
         </div>
-
     </div>
 </template>
 
@@ -166,6 +165,8 @@ export default {
         align-items: center;
         
         background-color: #182429;
+        overflow: hidden;
+
     }
 
     .app {

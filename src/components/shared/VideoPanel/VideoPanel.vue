@@ -25,30 +25,24 @@
         methods: {
             watchToggle: function(event) {
                 let container = document.querySelector('.video-display');
-                let video = document.querySelector('.video-display .video');
+                let video = document.querySelector('.video');
 
                 if (video.classList.contains('watch')) {
                     video.classList.remove('watch')
-                    container.classList.remove('watch')
                 } else {
                     video.classList.add('watch')
-                    container.classList.add('watch')
                     video.setAttribute('v-on:click','watchToggle')
                 }
             }
         }
     }
 
-
-
-
-
 </script>
 
 <style scoped>
     .video-display {
-        width: 80%;
-        max-width: 80%;
+        width: 100%;
+        max-width: 100%;
 
         height: 100%;
 
@@ -70,6 +64,10 @@
         z-index: 100;
         opacity: 100%;
         filter: blur(0px);
+        width: 100vw;
+        position: absolute;
+        left: 0;
+
     }
 
     .watch-video {
