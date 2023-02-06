@@ -67,7 +67,6 @@
         width: 100vw;
         position: absolute;
         left: 0;
-
     }
 
     .watch-video {
@@ -90,5 +89,16 @@
     .play-btn:hover {
         opacity: 100%;
     }
+
+    @media (max-width: 360px) {
+        .watch-video {
+            margin-left: 0;
+        }
+        .play-btn {
+            margin-left: 0;
+        }
+    }
+
+
 
 </style>

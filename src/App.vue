@@ -199,7 +199,6 @@ export default {
     }
 
     .game-logo {
-        min-width: 80%;
         padding: 20px;
     }
 
@@ -252,6 +251,33 @@ export default {
         flex-direction: row-reverse;
         align-items: center;
         border-radius: 8px;
+    }
+
+    /* Media queries */
+    
+    @media (max-width: 390px) {
+        .app {
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .static-bar {
+            border-radius: 0%;
+            width: 100%;
+            height: 12%;
+            background: linear-gradient(360deg, #182429 0%, #193C4B 98.44%);
+        }
+
+        .game-logo {
+            width: 35%;
+        }
+
+        .character-image {
+            display: none;
+        }
+
     }
 
 </style>
