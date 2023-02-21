@@ -75,4 +75,29 @@ export default {
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
+
+    @media (max-width: 390px) {
+        .description-container {
+            align-items: baseline;
+            justify-content: center;
+            top: 0;
+            margin-top: 16%;
+        }
+
+        .description {
+            font-size: 20px;
+        }
+        .description h1 { 
+            font-size: 20px;
+        }
+
+        .description h3 {
+            font-size: 20px;
+        }
+
+        .description span {
+            font-size: 32px;
+        }
+    }
+
 </style>

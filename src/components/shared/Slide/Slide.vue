@@ -238,4 +238,23 @@
         opacity: 1;
     }
 
+
+    /* Media queries */
+    
+    @media (max-width: 390px) {
+        .slide-container {
+            bottom: 14%;
+            width: 100%;
+        }
+
+        .slide-content {
+            width: 100%;
+        }
+
+        .slide-item {
+            margin: 0px 8px;
+        }
+    }
+
+
 </style>
